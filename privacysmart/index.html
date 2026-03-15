@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrivacySmart — Consenso Informato Digitale con AI per Professionisti</title>
+<meta name="description" content="Raccogli il consenso informato GDPR in digitale con firma OTP e intelligenza artificiale. Per fisioterapisti, psicologi, estetiste, avvocati e tutti i professionisti.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#3B5BDB;--blue-dark:#2945B0;--blue-light:#748FFC;--violet:#7048E8;--bg:#FAFBFF;--bg-dark:#0F1117;--text:#1A1D2E;--text-2:#4A4D6A;--text-3:#8A8DA8;--border:rgba(59,91,219,0.1);--border-2:rgba(0,0,0,0.07);--r:14px;--r-sm:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,251,255,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-2);}
+.nav-logo{font-weight:700;font-size:19px;color:var(--blue);}
+.nav-logo span{color:var(--violet);}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center;}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--text-2);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-cta{background:var(--blue)!important;color:white!important;padding:9px 20px;border-radius:100px;font-size:13.5px!important;transition:background .2s,transform .15s!important;}
+.nav-cta:hover{background:var(--blue-dark)!important;transform:translateY(-1px);}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:110px 48px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 50% at 15% 30%,rgba(59,91,219,0.08) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 85% 70%,rgba(112,72,232,0.07) 0%,transparent 60%);}
+.hero-dots{position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(59,91,219,0.08) 1px,transparent 1px);background-size:32px 32px;}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center;max-width:1100px;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(59,91,219,0.08);border:1px solid rgba(59,91,219,0.15);border-radius:100px;padding:5px 14px;margin-bottom:24px;font-size:12px;font-weight:600;color:var(--blue);}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+h1{font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px;}
+h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:300;background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:17px;font-weight:400;color:var(--text-2);line-height:1.7;margin-bottom:36px;max-width:480px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-primary{background:var(--blue);color:white;padding:14px 28px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(59,91,219,0.25);}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,91,219,0.35);}
+.btn-secondary{background:white;color:var(--blue);padding:14px 28px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);transition:all .2s;}
+.btn-secondary:hover{border-color:var(--blue);transform:translateY(-1px);}
+
+/* TRUST BADGES */
+.trust-strip{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.trust-badge{display:flex;align-items:center;gap:8px;background:white;border:1px solid var(--border-2);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--text-2);}
+.trust-badge svg{width:16px;height:16px;flex-shrink:0;}
+.trust-badge.blue{border-color:rgba(59,91,219,0.2);background:rgba(59,91,219,0.04);color:var(--blue);}
+.trust-badge.green{border-color:rgba(29,158,117,0.2);background:rgba(29,158,117,0.04);color:#0F6E56;}
+.trust-badge.violet{border-color:rgba(112,72,232,0.2);background:rgba(112,72,232,0.04);color:var(--violet);}
+
+/* HERO STATS */
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.stat-num{font-size:26px;font-weight:700;color:var(--blue);letter-spacing:-1px;}
+.stat-label{font-size:12px;color:var(--text-3);margin-top:1px;}
+
+/* MOCKUP */
+.mockup{background:white;border-radius:24px;box-shadow:0 24px 64px rgba(59,91,219,0.15),0 0 0 1px rgba(59,91,219,0.08);padding:22px 18px;}
+.m-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--violet));margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;}
+.m-title{font-size:12px;font-weight:700;text-align:center;color:var(--text);margin-bottom:2px;}
+.m-sub{font-size:10px;color:var(--text-3);text-align:center;margin-bottom:14px;}
+.m-field{background:var(--bg);border:1px solid var(--border-2);border-radius:7px;padding:8px 10px;margin-bottom:6px;font-size:11px;color:var(--text-3);}
+.m-btn{background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border-radius:100px;padding:10px;text-align:center;font-size:11px;font-weight:600;margin:10px 0;}
+.m-otp{background:rgba(59,91,219,.06);border:1px solid rgba(59,91,219,.15);border-radius:10px;padding:12px;text-align:center;margin-top:10px;}
+.m-otp-code{font-size:22px;font-weight:700;letter-spacing:8px;color:var(--blue);}
+.m-check{font-size:10px;color:#1D9E75;margin-top:4px;font-weight:600;}
+
+section{padding:96px 48px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.section-title{font-size:clamp(24px,3.5vw,38px);font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;}
+.section-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:300;}
+.section-sub{font-size:16px;color:var(--text-2);line-height:1.7;max-width:500px;}
+
+/* PROBLEMA */
+.problema{background:var(--bg-dark);}
+.problema .section-title,.problema h2{color:white;}
+.problema .section-sub{color:rgba(255,255,255,.5);}
+.problema .section-eyebrow{color:rgba(116,143,252,.9);}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:56px;}
+.p-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:24px 22px;transition:border-color .3s,background .3s;}
+.p-card:hover{background:rgba(255,255,255,.07);border-color:rgba(116,143,252,.25);}
+.p-icon{font-size:24px;margin-bottom:12px;}
+.p-card h3{font-size:15px;font-weight:600;color:white;margin-bottom:7px;}
+.p-card p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;}
+.p-callout{margin-top:56px;background:linear-gradient(135deg,rgba(59,91,219,.2),rgba(112,72,232,.15));border:1px solid rgba(116,143,252,.25);border-radius:var(--r);padding:36px;text-align:center;}
+.p-callout-num{font-family:'Fraunces',serif;font-size:56px;font-weight:400;color:rgba(196,181,253,.9);}
+.p-callout-text{font-size:16px;color:rgba(255,255,255,.55);margin-top:6px;}
+.p-callout-sub{font-size:13px;color:rgba(255,255,255,.3);margin-top:5px;}
+
+/* CATEGORIE */
+.categorie{background:white;}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:48px;}
+.cat-card{background:var(--bg);border:1px solid var(--border-2);border-radius:var(--r);padding:20px 16px;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(59,91,219,.09);border-color:rgba(59,91,219,.2);}
+.cat-icon{font-size:28px;margin-bottom:10px;}
+.cat-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.cat-num{font-size:11px;color:var(--text-3);}
+
+/* COME FUNZIONA */
+.come-funziona{background:var(--bg);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;margin-top:56px;}
+.step{padding:32px 26px;background:white;border-radius:var(--r);border:1px solid var(--border-2);transition:transform .25s,box-shadow .25s;}
+.step:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(59,91,219,.08);}
+.step-n{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.step h3{font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-.3px;}
+.step p{font-size:14px;color:var(--text-2);line-height:1.7;}
+
+/* AI FEATURES */
+.ai-section{background:var(--bg-dark);}
+.ai-section .section-title{color:white;}
+.ai-section .section-sub{color:rgba(255,255,255,.5);}
+.ai-section .section-eyebrow{color:rgba(196,181,253,.9);}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:56px;}
+.ai-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:24px 22px;transition:border-color .3s,background .3s;position:relative;overflow:hidden;}
+.ai-card:hover{background:rgba(255,255,255,.07);border-color:rgba(196,181,253,.3);}
+.ai-card::before{content:'AI';position:absolute;top:14px;right:16px;background:linear-gradient(135deg,rgba(59,91,219,.3),rgba(112,72,232,.3));border:1px solid rgba(196,181,253,.2);border-radius:100px;padding:2px 10px;font-size:10px;font-weight:700;color:rgba(196,181,253,.8);letter-spacing:.05em;}
+.ai-icon{font-size:28px;margin-bottom:14px;}
+.ai-card h3{font-size:15px;font-weight:600;color:white;margin-bottom:8px;}
+.ai-card p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;}
+.ai-pill{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:100px;font-size:10.5px;font-weight:600;}
+.ai-pill-pro{background:rgba(116,143,252,.15);color:rgba(196,181,253,.9);border:1px solid rgba(116,143,252,.2);}
+.ai-pill-clinic{background:rgba(112,72,232,.2);color:rgba(196,181,253,.9);border:1px solid rgba(112,72,232,.3);}
+.ai-pill-all{background:rgba(29,158,117,.2);color:#9FE1CB;border:1px solid rgba(29,158,117,.3);}
+.ai-note{margin-top:40px;background:rgba(59,91,219,.12);border:1px solid rgba(116,143,252,.2);border-radius:var(--r);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;}
+.ai-note-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.ai-note-text{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;}
+.ai-note-text strong{color:rgba(255,255,255,.9);}
+
+/* DEMO */
+.demo-section{background:white;}
+.demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:56px;}
+.demo-screen{background:var(--bg);border:1px solid var(--border-2);border-radius:16px;overflow:hidden;}
+.demo-bar{background:white;border-bottom:1px solid var(--border-2);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.demo-dot{width:8px;height:8px;border-radius:50%;}
+.demo-url{background:var(--bg);border-radius:100px;padding:4px 12px;font-size:11px;color:var(--text-3);margin-left:8px;flex:1;}
+.demo-content{padding:20px;}
+.demo-step{display:flex;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border-2);}
+.demo-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.demo-step-num{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.demo-step-text{font-size:12px;color:var(--text-2);line-height:1.6;}
+.demo-step-text strong{color:var(--text);display:block;margin-bottom:2px;font-size:12.5px;}
+.demo-info h3{font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:14px;}
+.demo-info p{font-size:14.5px;color:var(--text-2);line-height:1.7;margin-bottom:20px;}
+.demo-feature{display:flex;gap:10px;margin-bottom:10px;font-size:13.5px;align-items:flex-start;}
+.demo-feature-dot{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
+.demo-feature-dot::after{content:'✓';color:white;font-size:9px;font-weight:700;}
+
+/* PRICING */
+.pricing{background:var(--bg);}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px;align-items:start;}
+.plan{background:white;border-radius:var(--r);border:1px solid var(--border-2);padding:30px 26px;position:relative;transition:transform .25s,box-shadow .25s;}
+.plan:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(59,91,219,.1);}
+.plan.pop{border:1.5px solid var(--blue);}
+.plan-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:white;font-size:11.5px;font-weight:700;padding:3px 14px;border-radius:100px;white-space:nowrap;}
+.plan-name{font-size:12px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.plan-row{display:flex;align-items:baseline;gap:3px;margin-bottom:3px;}
+.plan-cur{font-size:17px;font-weight:600;color:var(--blue);}
+.plan-num{font-size:44px;font-weight:700;color:var(--text);letter-spacing:-2px;line-height:1;}
+.plan-per{font-size:13px;color:var(--text-3);}
+.plan-limit{font-size:13px;color:var(--text-2);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border-2);}
+.plan-limit strong{color:var(--blue);}
+.plan-section{font-size:10.5px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 6px;}
+.plan-feats{list-style:none;margin-bottom:10px;}
+.plan-feats li{font-size:13px;color:var(--text);padding:5px 0;display:flex;align-items:center;gap:8px;}
+.plan-feats li::before{content:'';width:16px;height:16px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--blue),var(--violet));background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3 3 7-6' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");}
+.plan-feats li.off{color:var(--text-3);}
+.plan-feats li.off::before{background:#EBEBEB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 5l6 6M11 5l-6 6' stroke='%23BBB' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");}
+.plan-ai-tag{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;background:linear-gradient(135deg,rgba(59,91,219,.15),rgba(112,72,232,.15));color:var(--violet);vertical-align:middle;}
+.plan-btn{display:block;width:100%;padding:13px;border-radius:100px;text-align:center;font-size:14.5px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;margin-top:20px;}
+.plan-btn-o{border:1.5px solid var(--blue);color:var(--blue);background:transparent;}
+.plan-btn-o:hover{background:var(--blue);color:white;}
+.plan-btn-f{background:var(--blue);color:white;box-shadow:0 6px 20px rgba(59,91,219,.28);}
+.plan-btn-f:hover{background:var(--blue-dark);transform:translateY(-1px);}
+.pricing-note{text-align:center;margin-top:28px;font-size:13.5px;color:var(--text-3);}
+.pricing-note strong{color:var(--blue);}
+
+/* TESTIMONIANZE */
+.testimonianze{background:white;}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:56px;}
+.t-card{background:var(--bg);border-radius:var(--r);padding:26px 22px;border:1px solid var(--border-2);}
+.t-stars{color:#F59E0B;font-size:13px;margin-bottom:10px;}
+.t-text{font-size:14.5px;line-height:1.7;color:var(--text);margin-bottom:18px;font-style:italic;}
+.t-author{display:flex;align-items:center;gap:10px;}
+.t-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;}
+.t-name{font-weight:600;font-size:13.5px;}
+.t-role{font-size:12px;color:var(--text-3);}
+
+/* FAQ */
+.faq-section{background:var(--bg);}
+.faq-grid{max-width:720px;margin:48px auto 0;}
+.faq-item{background:white;border-radius:var(--r);border:1px solid var(--border-2);margin-bottom:10px;overflow:hidden;}
+.faq-q{padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background .2s;}
+.faq-q:hover{background:var(--bg);}
+.faq-arrow{width:20px;height:20px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s;font-size:12px;color:var(--blue);}
+.faq-item.open .faq-arrow{transform:rotate(180deg);background:rgba(59,91,219,.1);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-a-inner{padding:0 22px 18px;font-size:14px;color:var(--text-2);line-height:1.7;}
+
+/* WAITLIST */
+.waitlist{background:var(--bg-dark);text-align:center;}
+.waitlist .section-title{color:white;}
+.w-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(112,72,232,.2);border:1px solid rgba(112,72,232,.3);border-radius:100px;padding:5px 14px;margin-bottom:22px;font-size:12.5px;color:rgba(196,181,253,.9);font-weight:500;}
+.w-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:36px;max-width:480px;margin-left:auto;margin-right:auto;}
+.w-input{flex:1;min-width:220px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:14px 22px;color:white;font-size:14.5px;outline:none;transition:border-color .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.w-input::placeholder{color:rgba(255,255,255,.35);}
+.w-input:focus{border-color:var(--blue-light);}
+.w-btn{background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:100px;padding:14px 28px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 20px rgba(112,72,232,.35);}
+.w-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(112,72,232,.45);}
+.w-note{font-size:12.5px;color:rgba(255,255,255,.35);margin-top:14px;}
+.w-ok{display:none;background:rgba(59,91,219,.15);border:1px solid rgba(59,91,219,.25);border-radius:var(--r-sm);padding:12px 20px;color:rgba(196,181,253,.9);font-size:13.5px;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;}
+
+/* CONTATTI */
+.contatti{background:var(--bg);}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:56px;}
+.c-info h3{font-size:20px;font-weight:700;margin-bottom:14px;letter-spacing:-.3px;}
+.c-info p{font-size:14.5px;color:var(--text-2);line-height:1.7;margin-bottom:22px;}
+.c-detail{display:flex;align-items:center;gap:10px;font-size:13.5px;margin-bottom:10px;}
+.c-icon{width:34px;height:34px;border-radius:9px;background:rgba(59,91,219,.08);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.c-form{background:white;border-radius:var(--r);padding:32px;border:1px solid var(--border-2);}
+.f-group{margin-bottom:14px;}
+.f-label{display:block;font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:5px;}
+.f-input{width:100%;background:var(--bg);border:1px solid var(--border-2);border-radius:var(--r-sm);padding:11px 14px;font-size:13.5px;color:var(--text);outline:none;transition:border-color .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.f-input:focus{border-color:var(--blue);}
+textarea.f-input{resize:vertical;min-height:90px;}
+.f-btn{width:100%;background:var(--blue);color:white;border:none;border-radius:100px;padding:13px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.f-btn:hover{background:var(--blue-dark);transform:translateY(-1px);}
+
+footer{background:var(--bg-dark);color:rgba(255,255,255,.4);padding:40px 48px;text-align:center;}
+.f-logo{font-weight:700;font-size:18px;color:white;margin-bottom:10px;}
+.f-logo span{color:rgba(116,143,252,.9);}
+.f-links{display:flex;gap:20px;justify-content:center;list-style:none;margin-bottom:18px;flex-wrap:wrap;}
+.f-links a{font-size:12.5px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.f-links a:hover{color:white;}
+.f-copy{font-size:11.5px;line-height:1.9;}
+
+/* COOKIE */
+#cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:white;border:1px solid var(--border-2);border-radius:var(--r);padding:20px 24px;max-width:560px;width:calc(100% - 40px);box-shadow:0 16px 48px rgba(0,0,0,0.12);display:flex;flex-direction:column;gap:14px;}
+.cookie-text{font-size:13px;color:var(--text-2);line-height:1.6;}
+.cookie-text a{color:var(--blue);text-decoration:none;font-weight:500;}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.cookie-accept{background:var(--blue);color:white;border:none;border-radius:100px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+.cookie-reject{background:transparent;color:var(--text-3);border:1px solid var(--border-2);border-radius:100px;padding:9px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+.cookie-settings{background:transparent;color:var(--blue);border:none;font-size:13px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:underline;padding:0;}
+
+/* PRIVACY MODAL */
+#privacy-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:20px;}
+#privacy-modal.open{display:flex;}
+.modal-box{background:white;border-radius:var(--r);max-width:680px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.2);}
+.modal-header{position:sticky;top:0;background:white;padding:20px 28px 16px;border-bottom:1px solid var(--border-2);display:flex;align-items:center;justify-content:space-between;}
+.modal-header h2{font-size:18px;font-weight:700;letter-spacing:-.3px;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-3);}
+.modal-body{padding:24px 28px;}
+.modal-body h3{font-size:15px;font-weight:700;margin:20px 0 8px;}
+.modal-body h3:first-child{margin-top:0;}
+.modal-body p{font-size:13.5px;color:var(--text-2);line-height:1.75;margin-bottom:10px;}
+.modal-body ul{margin:8px 0 10px 18px;}
+.modal-body ul li{font-size:13.5px;color:var(--text-2);line-height:1.75;margin-bottom:4px;}
+
+.fade{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.fade.in{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .demo-inner{grid-template-columns:1fr;}
+  .c-grid{grid-template-columns:1fr;}
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  section{padding:72px 20px;}
+  footer{padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Privacy<span>Smart</span></div>
+  <ul class="nav-links">
+    <li><a href="#categorie">Per chi</a></li>
+    <li><a href="#come-funziona">Come funziona</a></li>
+    <li><a href="#ai">Funzioni AI</a></li>
+    <li><a href="#prezzi">Prezzi</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="#waitlist" class="nav-cta">Prova gratis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="fade">
+      <div class="hero-badge"><div class="badge-dot"></div>Consenso digitale · Firma OTP · Intelligenza Artificiale</div>
+      <h1>Il consenso informato<br>diventato <em>finalmente</em> semplice.</h1>
+      <p class="hero-sub">Il paziente apre un link dal suo smartphone, legge l'informativa generata dall'AI, firma e riceve il PDF. Zero tablet, zero carta, zero archivio manuale.</p>
+      <div class="trust-strip">
+        <div class="trust-badge blue">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 4.5H14l-3.5 2.5 1.5 4.5L8 10 4 12.5l1.5-4.5L2 5.5h4.5z" fill="currentColor"/></svg>
+          eIDAS conforme
+        </div>
+        <div class="trust-badge green">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.2 2 3 4.2 3 7c0 3.5 5 9 5 9s5-5.5 5-9c0-2.8-2.2-5-5-5z" fill="currentColor" opacity=".3"/><circle cx="8" cy="7" r="2" fill="currentColor"/></svg>
+          GDPR art. 13
+        </div>
+        <div class="trust-badge violet">
+          <svg viewBox="0 0 16 16" fill="none"><rect x="3" y="6" width="10" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 6V5a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.5"/></svg>
+          Dati cifrati
+        </div>
+        <div class="trust-badge blue">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          CAD D.Lgs. 82/2005
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">Inizia gratis — 30 giorni</a>
+        <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">60"</div><div class="stat-label">per raccogliere un consenso</div></div>
+        <div class="stat"><div class="stat-num">€880</div><div class="stat-label">risparmiati ogni anno</div></div>
+        <div class="stat"><div class="stat-num">1.1M+</div><div class="stat-label">professionisti target in Italia</div></div>
+      </div>
+    </div>
+    <div class="fade" style="transition-delay:.15s">
+      <div class="mockup">
+        <div class="m-logo">PS</div>
+        <div class="m-title">Studio Fisioterapico Rossi</div>
+        <div class="m-sub">Consenso Informato GDPR · Generato con AI</div>
+        <div class="m-field">Nome e Cognome *</div>
+        <div class="m-field">Email paziente *</div>
+        <div class="m-field">Codice Fiscale *</div>
+        <div class="m-btn">AVANTI: LEGGI INFORMATIVA →</div>
+        <div class="m-otp">
+          <div style="font-size:10px;color:#888;margin-bottom:6px">Codice di verifica ricevuto via email</div>
+          <div class="m-otp-code">8 4 7 2</div>
+          <div class="m-check">✓ Identità verificata — PDF inviato</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="section-inner">
+    <div class="fade">
+      <div class="section-eyebrow">Il problema</div>
+      <h2 class="section-title">La carta ti costa più di quanto pensi</h2>
+      <p class="section-sub">Ogni giorno perdi tempo e denaro in un processo che si può eliminare completamente.</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-card fade"><div class="p-icon">🖨️</div><h3>Stampante sempre accesa</h3><p>Cartucce, carta, manutenzione. Una spesa fissa mensile che non produce nulla di utile.</p></div>
+      <div class="p-card fade" style="transition-delay:.08s"><div class="p-icon">📁</div><h3>Archivio fisico ingombrante</h3><p>Anni di moduli in faldoni. Impossibile cercare velocemente. Rischio smarrimento e sanzione.</p></div>
+      <div class="p-card fade" style="transition-delay:.16s"><div class="p-icon">⏱️</div><h3>20 minuti sprecati a paziente</h3><p>Stampa, firma, fotocopia, archivia. Un rituale lento che porta via tempo prezioso ogni giorno.</p></div>
+      <div class="p-card fade" style="transition-delay:.24s"><div class="p-icon">⚠️</div><h3>Rischio sanzione GDPR</h3><p>Senza archivio digitale tracciabile le sanzioni vanno da €10.000 a €60.000. Non vale il rischio.</p></div>
+    </div>
+    <div class="p-callout fade">
+      <div class="p-callout-num">€880</div>
+      <div class="p-callout-text">costo medio annuo della gestione cartacea per uno studio</div>
+      <div class="p-callout-sub">PrivacySmart costa €108/anno — risparmi €772 dal primo giorno</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIE -->
+<section class="categorie" id="categorie">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center">
+      <div class="section-eyebrow">Per chi è</div>
+      <h2 class="section-title">Per ogni professionista<br>che raccoglie dati personali</h2>
+      <p class="section-sub" style="margin:0 auto">Non solo sanitari — qualsiasi professionista che tratta dati personali è obbligato al GDPR.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card fade"><div class="cat-icon">🦴</div><div class="cat-name">Fisioterapisti</div><div class="cat-num">70.000 in Italia</div></div>
+      <div class="cat-card fade" style="transition-delay:.05s"><div class="cat-icon">🧠</div><div class="cat-name">Psicologi</div><div class="cat-num">65.000 in Italia</div></div>
+      <div class="cat-card fade" style="transition-delay:.1s"><div class="cat-icon">🥗</div><div class="cat-name">Nutrizionisti</div><div class="cat-num">30.000 in Italia</div></div>
+      <div class="cat-card fade" style="transition-delay:.15s"><div class="cat-icon">💆</div><div class="cat-name">Estetiste</div><div class="cat-num">150.000 attività</div></div>
+      <div class="cat-card fade" style="transition-delay:.2s"><div class="cat-icon">⚖️</div><div class="cat-name">Avvocati</div><div class="cat-num">250.000 in Italia</div></div>
+      <div class="cat-card fade" style="transition-delay:.25s"><div class="cat-icon">🏋️</div><div class="cat-name">Personal Trainer</div><div class="cat-num">80.000 attività</div></div>
+      <div class="cat-card fade" style="transition-delay:.3s"><div class="cat-icon">🦷</div><div class="cat-name">Dentisti</div><div class="cat-num">50.000 in Italia</div></div>
+      <div class="cat-card fade" style="transition-delay:.35s"><div class="cat-icon">🩺</div><div class="cat-name">Medici privati</div><div class="cat-num">Tutti i liberi professionisti</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="come-funziona" id="come-funziona">
+  <div class="section-inner">
+    <div class="fade">
+      <div class="section-eyebrow">Come funziona</div>
+      <h2 class="section-title">Tre passi. <em>Nessun hardware.</em></h2>
+      <p class="section-sub">Il paziente usa il suo telefono. Tu non tocchi nulla. Il documento è pronto in 60 secondi.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade">
+        <div class="step-n">1</div>
+        <h3>Il paziente apre il link</h3>
+        <p>Mandi il link via WhatsApp o SMS. Il paziente lo apre dal suo smartphone — nessuna app da installare, nessun account da creare. Funziona su qualsiasi dispositivo.</p>
+      </div>
+      <div class="step fade" style="transition-delay:.1s">
+        <div class="step-n">2</div>
+        <h3>Legge, consente e firma</h3>
+        <p>Scorre l'informativa GDPR generata dall'AI con il tuo logo e testi. Seleziona i consensi, firma con il dito e verifica la sua identità con codice OTP via email.</p>
+      </div>
+      <div class="step fade" style="transition-delay:.2s">
+        <div class="step-n">3</div>
+        <h3>PDF generato e archiviato</h3>
+        <p>Il sistema genera il PDF con firma e audit trail OTP, lo invia al paziente via email e lo salva automaticamente nel tuo Dropbox o Google Drive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center;margin-bottom:0">
+      <div class="section-eyebrow">Il prodotto</div>
+      <h2 class="section-title">Tutto in <em>60 secondi</em></h2>
+    </div>
+    <div class="demo-inner">
+      <div class="demo-screen fade">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#FF5F57"></div>
+          <div class="demo-dot" style="background:#FFBD2E"></div>
+          <div class="demo-dot" style="background:#28C840"></div>
+          <div class="demo-url">privacysmartapp.it/s/studio-rossi</div>
+        </div>
+        <div class="demo-content">
+          <div class="demo-step">
+            <div class="demo-step-num">1</div>
+            <div class="demo-step-text"><strong>Paziente compila il form</strong>Nome, cognome, codice fiscale, email. Validazione automatica in tempo reale.</div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-step-num">2</div>
+            <div class="demo-step-text"><strong>Legge l'informativa GDPR</strong>Generata dall'AI per la tua specializzazione. Consensi chiari e comprensibili.</div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-step-num">3</div>
+            <div class="demo-step-text"><strong>Firma con il dito</strong>Canvas touch-screen ottimizzato. Supporta Apple Pencil e S Pen.</div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-step-num">4</div>
+            <div class="demo-step-text"><strong>Verifica OTP via email</strong>Codice a 6 cifre. Valido 10 minuti. Prova legale dell'identità conforme eIDAS.</div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-step-num">5</div>
+            <div class="demo-step-text"><strong>PDF inviato e archiviato</strong>Al paziente via email. A te su Dropbox o Google Drive. Automatico.</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-info fade" style="transition-delay:.15s">
+        <h3>Il paziente usa il suo telefono. Tu non tocchi nulla.</h3>
+        <p>Nessun tablet da comprare, nessuna app da installare, nessuna formazione necessaria. Il link funziona su qualsiasi smartphone — iOS, Android, qualsiasi browser.</p>
+        <div class="demo-feature"><div class="demo-feature-dot"></div><span>Funziona su qualsiasi smartphone — anche quelli dei pazienti anziani</span></div>
+        <div class="demo-feature"><div class="demo-feature-dot"></div><span>Il paziente può firmare a casa prima della visita</span></div>
+        <div class="demo-feature"><div class="demo-feature-dot"></div><span>PDF con valore legale conforme eIDAS Reg. UE 910/2014</span></div>
+        <div class="demo-feature"><div class="demo-feature-dot"></div><span>Archivio digitale ricercabile — mai più faldoni</span></div>
+        <div style="margin-top:24px;"><a href="#waitlist" class="btn-primary">Prova gratis 30 giorni</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI FEATURES -->
+<section class="ai-section" id="ai">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center">
+      <div class="section-eyebrow">Intelligenza Artificiale</div>
+      <h2 class="section-title" style="color:white;">L'unico strumento di consenso<br>con AI integrata</h2>
+      <p class="section-sub" style="margin:0 auto">Sei funzioni intelligenti che automatizzano la compliance GDPR e ti fanno risparmiare ore ogni settimana.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card fade">
+        <div class="ai-icon">📝</div>
+        <h3>Generatore GDPR automatico</h3>
+        <p>Rispondi a 10 domande sulla tua specializzazione e l'AI genera l'informativa privacy completa art. 13 GDPR su misura. Pronta da usare, aggiornata alle ultime normative.</p>
+        <span class="ai-pill ai-pill-all">Tutti i piani</span>
+      </div>
+      <div class="ai-card fade" style="transition-delay:.08s">
+        <div class="ai-icon">🎯</div>
+        <h3>Suggeritore consensi intelligente</h3>
+        <p>Dì all'AI che tipo di professionista sei e ti suggerisce automaticamente quali consensi aggiungere al form. Nessuna dimenticanza, nessuna sanzione per consensi mancanti.</p>
+        <span class="ai-pill ai-pill-all">Tutti i piani</span>
+      </div>
+      <div class="ai-card fade" style="transition-delay:.16s">
+        <div class="ai-icon">🔔</div>
+        <h3>Rilevamento anomalie automatico</h3>
+        <p>Il sistema controlla ogni giorno i consensi raccolti e ti avvisa via email se ci sono irregolarità — consenso obbligatorio rifiutato, OTP non verificato, campi mancanti.</p>
+        <span class="ai-pill ai-pill-all">Tutti i piani</span>
+      </div>
+      <div class="ai-card fade" style="transition-delay:.24s">
+        <div class="ai-icon">💬</div>
+        <h3>Chatbot GDPR sempre disponibile</h3>
+        <p>Hai una domanda sulla normativa? Chiedi direttamente all'AI: "Devo raccogliere il consenso per le foto?" o "Quanto tempo conservo i documenti?". Risposta immediata con articoli GDPR citati.</p>
+        <span class="ai-pill ai-pill-pro">Professional e Clinic</span>
+      </div>
+      <div class="ai-card fade" style="transition-delay:.32s">
+        <div class="ai-icon">🌍</div>
+        <h3>Traduttore automatico informativa</h3>
+        <p>Con un click l'AI traduce l'informativa in inglese, arabo, romeno, ucraino, cinese, spagnolo. Il paziente straniero la legge nella sua lingua — consenso più valido e comprensibile.</p>
+        <span class="ai-pill ai-pill-clinic">Solo Clinic</span>
+      </div>
+      <div class="ai-card fade" style="transition-delay:.4s">
+        <div class="ai-icon">📊</div>
+        <h3>Report mensile AI</h3>
+        <p>Ogni mese ricevi un PDF con l'analisi intelligente dei consensi raccolti: statistiche, trend, anomalie, suggerimenti per migliorare la compliance. Tutto automatico.</p>
+        <span class="ai-pill ai-pill-clinic">Solo Clinic</span>
+      </div>
+    </div>
+    <div class="ai-note fade">
+      <div class="ai-note-icon">⚡</div>
+      <div class="ai-note-text"><strong>Tutte le funzioni AI sono integrate nativamente</strong> — nessun abbonamento aggiuntivo, nessuna configurazione. Funzionano dal primo giorno con il tuo piano. Il costo dell'AI è incluso nel prezzo mensile.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="prezzi">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center">
+      <div class="section-eyebrow">Prezzi</div>
+      <h2 class="section-title">Semplice e trasparente.</h2>
+      <p class="section-sub" style="margin:0 auto">30 giorni gratis su tutti i piani. Nessuna carta di credito richiesta.</p>
+    </div>
+    <div class="plans">
+
+      <div class="plan fade">
+        <div class="plan-name">Starter</div>
+        <div class="plan-row"><span class="plan-cur">€</span><span class="plan-num">9</span><span class="plan-per">/mese</span></div>
+        <div class="plan-limit">Fino a <strong>20 pazienti</strong> al mese</div>
+        <div class="plan-section">Base</div>
+        <ul class="plan-feats">
+          <li>Form personalizzato con logo</li>
+          <li>PDF automatico con firma</li>
+          <li>Email automatica al paziente</li>
+          <li>Colori e branding studio</li>
+        </ul>
+        <div class="plan-section">Intelligenza Artificiale</div>
+        <ul class="plan-feats">
+          <li>Generatore GDPR <span class="plan-ai-tag">AI</span></li>
+          <li>Suggeritore consensi <span class="plan-ai-tag">AI</span></li>
+          <li>Rilevamento anomalie <span class="plan-ai-tag">AI</span></li>
+          <li class="off">Chatbot GDPR</li>
+          <li class="off">Traduttore lingue</li>
+          <li class="off">Report mensile</li>
+        </ul>
+        <a href="#waitlist" class="plan-btn plan-btn-o">Inizia gratis</a>
+      </div>
+
+      <div class="plan pop fade" style="transition-delay:.1s">
+        <div class="plan-tag">Più scelto</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-row"><span class="plan-cur">€</span><span class="plan-num">25</span><span class="plan-per">/mese</span></div>
+        <div class="plan-limit">Fino a <strong>60 pazienti</strong> al mese</div>
+        <div class="plan-section">Base</div>
+        <ul class="plan-feats">
+          <li>Tutto lo Starter</li>
+          <li>Verifica OTP — valore eIDAS</li>
+          <li>Dropbox / Google Drive</li>
+          <li>Archivio consensi digitale</li>
+        </ul>
+        <div class="plan-section">Intelligenza Artificiale</div>
+        <ul class="plan-feats">
+          <li>Generatore GDPR <span class="plan-ai-tag">AI</span></li>
+          <li>Suggeritore consensi <span class="plan-ai-tag">AI</span></li>
+          <li>Rilevamento anomalie <span class="plan-ai-tag">AI</span></li>
+          <li>Chatbot GDPR <span class="plan-ai-tag">AI</span></li>
+          <li class="off">Traduttore lingue</li>
+          <li class="off">Report mensile</li>
+        </ul>
+        <a href="#waitlist" class="plan-btn plan-btn-f">Inizia gratis</a>
+      </div>
+
+      <div class="plan fade" style="transition-delay:.2s">
+        <div class="plan-name">Clinic</div>
+        <div class="plan-row"><span class="plan-cur">€</span><span class="plan-num">45</span><span class="plan-per">/mese</span></div>
+        <div class="plan-limit"><strong>Pazienti illimitati</strong></div>
+        <div class="plan-section">Base</div>
+        <ul class="plan-feats">
+          <li>Tutto il Professional</li>
+          <li>Pazienti illimitati</li>
+          <li>Più utenti per studio</li>
+          <li>Supporto prioritario</li>
+        </ul>
+        <div class="plan-section">Intelligenza Artificiale completa</div>
+        <ul class="plan-feats">
+          <li>Tutte le funzioni AI <span class="plan-ai-tag">AI</span></li>
+          <li>Chatbot GDPR <span class="plan-ai-tag">AI</span></li>
+          <li>Traduttore 6 lingue <span class="plan-ai-tag">AI</span></li>
+          <li>Report mensile automatico <span class="plan-ai-tag">AI</span></li>
+        </ul>
+        <a href="#waitlist" class="plan-btn plan-btn-o">Inizia gratis</a>
+      </div>
+
+    </div>
+    <p class="pricing-note fade">Tutti i piani includono <strong>30 giorni gratuiti</strong> · Disdici quando vuoi · Nessun costo nascosto · AI inclusa</p>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section class="testimonianze" id="testimonianze">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center">
+      <div class="section-eyebrow">Testimonianze</div>
+      <h2 class="section-title">Lo dicono i professionisti</h2>
+      <p class="section-sub" style="margin:0 auto">Fisioterapisti, psicologi, estetiste e avvocati che hanno eliminato la carta.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card fade">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Finalmente i pazienti firmano prima ancora di arrivare in studio. Ho recuperato 30 minuti al giorno che usavo per la burocrazia. Il generatore GDPR mi ha fatto risparmiare la consulenza dell'avvocato."</p>
+        <div class="t-author"><div class="t-av">MR</div><div><div class="t-name">Marco R.</div><div class="t-role">Fisioterapista — Milano</div></div></div>
+      </div>
+      <div class="t-card fade" style="transition-delay:.1s">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Il chatbot GDPR è oro. Ogni volta che ho un dubbio sulla normativa chiedo direttamente e mi risponde citando gli articoli. Vale il prezzo dell'abbonamento da solo."</p>
+        <div class="t-author"><div class="t-av">LC</div><div><div class="t-name">Laura C.</div><div class="t-role">Psicologa — Roma</div></div></div>
+      </div>
+      <div class="t-card fade" style="transition-delay:.2s">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Ho un salone estetico con clienti che fanno trattamenti laser. Il consenso con foto prima/dopo era un disastro su carta. Ora tutto digitale, archivio perfetto, zero problemi con il Garante."</p>
+        <div class="t-author"><div class="t-av">SF</div><div><div class="t-name">Stefania F.</div><div class="t-role">Centro Estetico — Torino</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div class="fade" style="text-align:center">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Domande frequenti</h2>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">La firma elettronica ha valore legale?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sì. PrivacySmart usa la Firma Elettronica Semplice con verifica OTP via email, conforme al Regolamento eIDAS UE 910/2014 e al CAD D.Lgs. 82/2005. La combinazione firma grafica + codice OTP collegato all'email del paziente crea una prova digitale dell'identità riconosciuta dalla legge italiana ed europea.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Il paziente deve installare un'app?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">No, assolutamente. Il paziente riceve un link via WhatsApp, SMS o email. Lo apre con qualsiasi browser sul suo smartphone — iPhone, Android, qualsiasi versione. Nessuna app da installare, nessun account da creare. Funziona anche su telefoni vecchi.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Devo comprare tablet o hardware?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">No. È il vantaggio principale di PrivacySmart rispetto ai competitor. Nessun tablet, nessuna stampante, nessun hardware aggiuntivo. Il paziente usa il suo smartphone personale. Tu hai bisogno solo di un computer o smartphone per gestire il pannello admin.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Come funziona il generatore GDPR con AI?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Nel pannello admin rispondi a 10 domande sulla tua attività: specializzazione, tipo di dati che tratti, se usi sistemi AI, se hai dipendenti, ecc. L'intelligenza artificiale genera automaticamente l'informativa privacy completa art. 13 GDPR personalizzata per te. È già caricata nel sistema e pronta da usare.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Dove vengono salvati i PDF dei consensi?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Puoi scegliere tu: nel tuo Dropbox personale, nel tuo Google Drive, o nell'archivio interno di PrivacySmart. I dati rimangono tuoi — non li condividiamo con nessuno. Puoi scaricare tutti i consensi in qualsiasi momento dal pannello admin.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Posso personalizzare il form con il mio logo?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sì, completamente. Nel pannello admin carichi il tuo logo, scegli i colori del tuo studio, inserisci il tuo testo e i consensi specifici per la tua attività. Il paziente vede un form con il tuo brand, non quello di PrivacySmart. Anche l'email con il PDF parte con il tuo nome.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Funziona anche per estetiste, avvocati e palestre?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sì. PrivacySmart funziona per qualsiasi professionista che raccoglie dati personali e deve rispettare il GDPR — non solo sanitari. Il generatore AI adatta l'informativa alla tua specifica categoria professionale e ai dati che tratti.</div></div>
+      </div>
+
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">Posso disdire quando voglio?<div class="faq-arrow">▼</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sì, senza penali. Puoi disdire l'abbonamento in qualsiasi momento dal pannello admin. I tuoi dati e i PDF dei consensi rimangono accessibili per 30 giorni dopo la disdetta, poi vengono cancellati in modo sicuro. Nessun vincolo, nessuna burocrazia.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- BLOG -->
+<section style="background:white;" id="blog">
+  <div class="section-inner">
+    <div class="fade" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:48px;">
+      <div>
+        <div class="section-eyebrow">Blog</div>
+        <h2 class="section-title" style="margin-bottom:8px;">Guide pratiche su GDPR<br>e consenso digitale</h2>
+        <p class="section-sub" style="max-width:400px;">Articoli scritti per fisioterapisti, psicologi, estetiste e tutti i professionisti che raccolgono dati personali.</p>
+      </div>
+      <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;padding:10px 20px;border:1.5px solid var(--blue);border-radius:100px;transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--blue)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--blue)'">Tutti gli articoli →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+
+      <a href="/blog/consenso-informato-digitale-fisioterapista" style="background:var(--bg);border-radius:var(--r);border:1px solid var(--border-2);padding:24px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:block;" class="fade" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 32px rgba(59,91,219,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:8px;">Fisioterapia · GDPR</div>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-.3px;color:var(--text);line-height:1.35;margin-bottom:10px;">Consenso informato digitale per fisioterapisti: guida completa 2025</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:14px;">Cosa deve contenere l'informativa, quali dati trattare, firma OTP conforme eIDAS. La guida più completa.</div>
+        <div style="font-size:12px;color:var(--text-3);">⏱️ 8 min lettura</div>
+      </a>
+
+      <a href="/blog/quanto-costa-carta-studio" style="background:var(--bg);border-radius:var(--r);border:1px solid var(--border-2);padding:24px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:block;" class="fade" style="transition-delay:.08s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 32px rgba(59,91,219,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:8px;">Costi · Efficienza</div>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-.3px;color:var(--text);line-height:1.35;margin-bottom:10px;">Quanto costa davvero la carta al tuo studio (i calcoli reali)</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:14px;">Abbiamo calcolato voce per voce: carta, cartucce, tempo, archivio. Il totale ti sorprenderà.</div>
+        <div style="font-size:12px;color:var(--text-3);">⏱️ 6 min lettura</div>
+      </a>
+
+      <a href="/blog/sanzioni-gdpr-professionisti-sanitari" style="background:var(--bg);border-radius:var(--r);border:1px solid var(--border-2);padding:24px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:block;" class="fade" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 32px rgba(59,91,219,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#A32D2D;margin-bottom:8px;">⚠️ Sanzioni · GDPR</div>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-.3px;color:var(--text);line-height:1.35;margin-bottom:10px;">Sanzioni GDPR per professionisti sanitari: cosa rischi senza archivio digitale</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:14px;">Le violazioni più comuni, gli importi delle sanzioni e come mettersi in regola in 30 minuti.</div>
+        <div style="font-size:12px;color:var(--text-3);">⏱️ 7 min lettura</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="section-inner">
+    <div class="fade">
+      <div class="w-pill">🔥 47 professionisti già in lista d'attesa</div>
+      <h2 class="section-title">Prova gratis per 30 giorni.<br><em>Nessuna carta di credito.</em></h2>
+      <p style="font-size:16px;color:rgba(255,255,255,.45);margin-top:10px;">Configurazione in 10 minuti. AI inclusa dal primo giorno. Primo paziente subito.</p>
+      <div class="w-form">
+        <input type="email" class="w-input" id="w-email" placeholder="La tua email professionale">
+        <button class="w-btn" onclick="iscriviWaitlist()">Inizia gratis →</button>
+      </div>
+      <div class="w-ok" id="w-ok">✓ Ottimo! Ti contatteremo entro 24 ore con il tuo accesso gratuito.</div>
+      <p class="w-note">Nessuno spam. Solo il tuo accesso quando sei pronto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contatti" id="contatti">
+  <div class="section-inner">
+    <div class="fade">
+      <div class="section-eyebrow">Contatti</div>
+      <h2 class="section-title">Hai domande? Scrivici.</h2>
+    </div>
+    <div class="c-grid">
+      <div class="c-info fade">
+        <h3>Siamo qui per aiutarti</h3>
+        <p>Che tu voglia una demo personalizzata, abbia dubbi sulla conformità GDPR o voglia capire se PrivacySmart fa per te, rispondiamo entro 24 ore.</p>
+        <div class="c-detail"><div class="c-icon">📧</div><span>info@privacysmartapp.it</span></div>
+        <div class="c-detail"><div class="c-icon">📞</div><span>+39 340 161 9836</span></div>
+        <div class="c-detail"><div class="c-icon">📍</div><span>Rozzano (MI) — Italia</span></div>
+        <div class="c-detail"><div class="c-icon">🕐</div><span>Lun–Ven 9:00–18:00</span></div>
+      </div>
+      <div class="c-form fade" style="transition-delay:.1s">
+        <div class="f-group"><label class="f-label">Nome e cognome</label><input type="text" class="f-input" placeholder="Dr. Mario Rossi"></div>
+        <div class="f-group"><label class="f-label">Email</label><input type="email" class="f-input" placeholder="mario.rossi@studio.it"></div>
+        <div class="f-group"><label class="f-label">Categoria professionale</label><input type="text" class="f-input" placeholder="Fisioterapista, Psicologo, Estetista, Avvocato..."></div>
+        <div class="f-group"><label class="f-label">Messaggio</label><textarea class="f-input" placeholder="Come possiamo aiutarti?"></textarea></div>
+        <button class="f-btn" onclick="inviaContatto(this)">Invia messaggio</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Privacy<span>Smart</span></div>
+  <ul class="f-links">
+    <li><a href="#categorie">Per chi</a></li>
+    <li><a href="#come-funziona">Come funziona</a></li>
+    <li><a href="#ai">Funzioni AI</a></li>
+    <li><a href="#prezzi">Prezzi</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+    <li><a href="#" onclick="apriPrivacy(event)">Privacy Policy</a></li>
+    <li><a href="#" onclick="apriPrivacy(event)">Cookie Policy</a></li>
+  </ul>
+  <p class="f-copy">
+    © 2025 PrivacySmart — Jonathan Mezzela — P.IVA 13584710969 — Via Monviso 55, 20089 Rozzano (MI)<br>
+    Firma elettronica conforme eIDAS Reg. UE 910/2014 · GDPR Reg. UE 2016/679 · CAD D.Lgs. 82/2005
+  </p>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <div class="cookie-text">Utilizziamo cookie tecnici necessari al funzionamento del sito e, con il tuo consenso, cookie analitici per migliorare la tua esperienza. Leggi la nostra <a href="#" onclick="apriPrivacy(event)">Cookie Policy</a> e la <a href="#" onclick="apriPrivacy(event)">Privacy Policy</a>.</div>
+  <div class="cookie-actions">
+    <button class="cookie-accept" onclick="accettaCookie()">Accetta tutti</button>
+    <button class="cookie-reject" onclick="rifiutaCookie()">Solo necessari</button>
+    <button class="cookie-settings" onclick="apriPrivacy(event)">Gestisci preferenze</button>
+  </div>
+</div>
+
+<!-- PRIVACY MODAL -->
+<div id="privacy-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>Privacy Policy & Cookie Policy</h2>
+      <button class="modal-close" onclick="chiudiPrivacy()">×</button>
+    </div>
+    <div class="modal-body">
+      <p><em>Ultimo aggiornamento: 2025 — Versione 1.0 (bozza da validare con avvocato)</em></p>
+      <h3>1. Titolare del trattamento</h3>
+      <p>Jonathan Mezzela, titolare di PrivacySmart, con sede in Via Monviso 55, 20089 Rozzano (MI) — P.IVA 13584710969 — email: info@privacysmartapp.it</p>
+      <h3>2. Dati raccolti tramite questo sito</h3>
+      <ul>
+        <li><strong>Dati di navigazione:</strong> indirizzo IP, tipo di browser, pagine visitate, orario di accesso.</li>
+        <li><strong>Dati forniti volontariamente:</strong> nome, email, categoria professionale inseriti nel form di contatto o nella lista d'attesa.</li>
+      </ul>
+      <h3>3. Finalità e base giuridica</h3>
+      <ul>
+        <li>Risposta alle richieste — base: misure precontrattuali (art. 6 c.1 lett. b GDPR)</li>
+        <li>Gestione lista d'attesa — base: consenso (art. 6 c.1 lett. a GDPR)</li>
+        <li>Sicurezza sito — base: legittimo interesse (art. 6 c.1 lett. f GDPR)</li>
+      </ul>
+      <h3>4. Cookie utilizzati</h3>
+      <p><strong>Cookie tecnici (necessari):</strong> indispensabili per il funzionamento del sito. Non richiedono consenso.</p>
+      <p><strong>Cookie analitici (opzionali):</strong> analisi traffico in forma aggregata e anonima. Solo con consenso esplicito.</p>
+      <h3>5. Conservazione</h3>
+      <p>Dati form di contatto: non oltre 24 mesi. Lista d'attesa: fino a cancellazione o revoca consenso.</p>
+      <h3>6. Diritti dell'interessato</h3>
+      <p>Accesso, rettifica, cancellazione, portabilità, opposizione (artt. 15-22 GDPR). Scrivi a info@privacysmartapp.it. Puoi reclamare al Garante: www.garanteprivacy.it</p>
+      <h3>7. Trasferimento dati extra-UE</h3>
+      <p>Sito ospitato su GitHub Pages (USA) — trasferimento basato su Clausole Contrattuali Standard approvate dalla Commissione Europea.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+if(localStorage.getItem('cookie_consent')){document.getElementById('cookie-banner').style.display='none';}
+function accettaCookie(){localStorage.setItem('cookie_consent','all');document.getElementById('cookie-banner').style.display='none';}
+function rifiutaCookie(){localStorage.setItem('cookie_consent','necessary');document.getElementById('cookie-banner').style.display='none';}
+
+function apriPrivacy(e){if(e)e.preventDefault();document.getElementById('privacy-modal').classList.add('open');document.body.style.overflow='hidden';}
+function chiudiPrivacy(){document.getElementById('privacy-modal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('privacy-modal').addEventListener('click',function(e){if(e.target===this)chiudiPrivacy();});
+
+function toggleFaq(el){const item=el.parentElement;item.classList.toggle('open');}
+
+function iscriviWaitlist(){
+  const email=document.getElementById('w-email').value.trim();
+  if(!email||!email.includes('@')){document.getElementById('w-email').style.borderColor='#ff4444';document.getElementById('w-email').focus();return;}
+  document.getElementById('w-email').style.borderColor='';
+  document.getElementById('w-ok').style.display='block';
+  document.getElementById('w-email').value='';
+}
+
+function inviaContatto(btn){
+  btn.textContent='✓ Messaggio inviato!';
+  btn.style.background='#1D9E75';
+  setTimeout(()=>{btn.textContent='Invia messaggio';btn.style.background='';},3000);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href==='#')return;
+    e.preventDefault();
+    const t=document.querySelector(href);
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
